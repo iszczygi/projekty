@@ -1,0 +1,35 @@
+/*.button-like {*/
+/*    !*display: none;*!*/
+/*    !*padding: 10px 20px;*!*/
+/*    !*text-align: center;*!*/
+/*    text-decoration: underline;*/
+/*    !*border: 1px solid #3498db;*!*/
+/*    color: #3498db;*/
+/*    !*background-color: #ffffff;*!*/
+/*    cursor: pointer;*/
+/*    !*border-radius: 5px;*!*/
+/*    transition: background-color 0.3s, color 0.3s, border-color 0.3s;*/
+/*}*/
+
+.button-like:hover {
+    background-color: #3498db;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.button-like {
+    text-decoration: underline;
+    color: #3498db; /* Set the text color */
+    cursor: pointer;
+    transition: color 0.3s; /* Add transition effect for text color */
+    /*display: block; !* Set to inline to prevent block appearance *!*/
+    padding: 0; /* Remove any padding */
+    border: none; /* Remove any border */
+    background: none; /* Remove any background */
+    text-align: left;
+    vertical-align: text-bottom;
+}
+
+.form {
+    display:inline;
+}

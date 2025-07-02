@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nowa stacja</title>
+
+    <style>
+        body {
+            background-color: #B0C4DE;
+            color: #000;
+        }
+
+        .form-group div {
+            white-space: nowrap; /* Dodajemy atrybut CSS, który zapobiega przejściu do nowej linii */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+        }
+
+        table, th, td {
+            border: 1px solid #000;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #343a40; /* Kolor niebieski dla nagłówka */
+            color: #FFF; /* Białe napisy dla nagłówka */
+        }
+
+        label {
+            text-align: center;
+            margin-top: 40px;
+            color: #000;
+            font-size: 50px;
+            font-family: 'Bevan', sans-serif;
+            display: block;
+            width: 100%;
+        }
+
+        #submitBtn, #cancelBtn {
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #submitBtn {
+            background-color: #28a745; /* Kolor zielony dla przycisku "Zapisz" */
+            color: #FFF;
+        }
+
+        #cancelBtn {
+            background-color: #dc3545; /* Kolor czerwony dla przycisku "Anuluj" */
+            color: #FFF;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<label>NOWA STACJA</label>
+<form action="#" th:action="@{/save_stacje}" th:object="${stacje}" method="post">
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <td><input type="text" th:field="*{ID_stacji}" required/></td>
+        </tr>
+        <tr>
+            <th>Ilość pracowników</th>
+            <td><input type="text" th:field="*{ilosc_pracownikow}" required/></td>
+        </tr>
+        <tr>
+            <th>Rodzaj stacji</th>
+            <td><input type="text" th:field="*{rodzaj_stacji}" required/></td>
+        </tr>
+        <tr>
+            <th>Częstotliwość</th>
+            <td><input type="text" th:field="*{czestotliwosc}"/></td>
+        </tr>
+    </table>
+
+    <button id="submitBtn" type="submit">Zapisz</button>
+    <button id="cancelBtn" type="button" onclick="goBack()">Anuluj</button>
+
+</form>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+</body>
+</html>

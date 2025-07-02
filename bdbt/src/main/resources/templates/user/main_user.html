@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Strona Główna user</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/css/buttons.css}">
+
+    <style>
+        body {
+            background-color: #B0C4DE;
+            color: #000;
+        }
+
+        .form-group div {
+            white-space: nowrap; /* Dodajemy atrybut CSS, który zapobiega przejściu do nowej linii */
+        }
+    </style>
+
+</head>
+<body>
+<div class="modal fade" id="timeoutModal" tabindex="-1" role="dialog" aria-labelledby="timeoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="timeoutModalLabel">Przekroczono czas bezczynności na stronie</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Chcesz zostać na stronie?
+            </div>
+            <div class="modal-footer">
+
+                <form class="form-inline my-2 my-lg-0" method="post" th:action="@{/logout}">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyloguj</button>
+                </form>
+                <button type="button" class="btn btn-primary" onclick="resetTimer(); $('#timeoutModal').modal('hide');">Zostań</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">PolSzczygKucBud</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Strona Powitalna</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Strona Główna
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/data_user}">Dane</a>
+                </li>
+
+                <li class="nav-item">
+                    <span class="nav-link" th:inline="text" style="color:lightskyblue;">Jesteś zalogowany jako <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]
+                    </b></span>
+                </li>
+
+                <li>
+                    <form method="post" th:action="@{/index}" class="form-inline">
+                        <button class="btn btn-primary" type="submit" onclick="successfullyLogout()"
+                                value="Sign Out">Logout
+                        </button>
+                    </form>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-10 mt-5">
+            <form method="post" th:action="@{/index}">
+                <div class="form-group">
+                    <label style="font-size:30px" th:inline="text">Witaj <a
+                            style="color:darkblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
+                        na stronie głównej!</label>
+                    <div style="font-size:20px">Jeśli chcesz się wylogować, kliknij przycisk "Logout" poniżej.</div>
+                </div>
+                <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/data_show.js}"></script>
+<script th:src="@{/js/table_creation.js}"></script>
+<script>
+    var timeout;
+
+    function startTimer() {
+        timeout = setTimeout(showTimeoutModal, 20000); // 20 seconds
+    }
+
+    function resetTimer() {
+        clearTimeout(timeout);
+        startTimer();
+    }
+
+    function logout() {
+        window.location.href = '/logout'; // Redirect to the logout URL
+    }
+
+    function showTimeoutModal() {
+        $('#timeoutModal').modal('show');
+    }
+
+    document.addEventListener('mousemove', resetTimer);
+    document.addEventListener('keypress', resetTimer);
+
+    startTimer(); // Start the timer initially
+</script>
+
+</body>
+</html>

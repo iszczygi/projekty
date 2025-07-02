@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Strona Powitalna</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <link th:href="@{/css/opis.css}" th:rel="stylesheet" />
+    <link th:href="@{/css/style.css}" th:rel="stylesheet" />
+    <style>
+
+        body {
+            background-color: #B0C4DE;
+            color: #000;
+            font-family: 'Open Sans', sans-serif; /* Czcionka dla tekstu w body */
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .program-name,
+        .station-name {
+            font-family: 'Futura', sans-serif;
+            font-size: 42px;
+            color: #333;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .program-name:hover,
+        .station-name:hover {
+            transform: scale(1.2);
+        }
+
+        .separator {
+            width: 100%;
+            height: 10px;
+            background-color: rgba(128, 128, 128, 0.5); /* Półprzezroczysty szary kolor */
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .tooltip-inner {
+            max-width: 500px;
+            background-color: #fff; /* Białe tło tooltipa */
+            color: #000; /* Czarny kolor tekstu tooltipa */
+            border: 1px solid #000; /* Czarna obwódka tooltipa */
+        }
+                /* Dodane style dla tooltipa - aby był na prawo */
+        .tooltip.right .tooltip-arrow {
+            border-right-color: #000; /* Kolor strzałki tooltipa */
+        }
+
+
+    </style>
+
+</head>
+
+<body style="background-color: #B0C4DE; color: #000;">
+
+
+<!--<style th:inline="text">-->
+<!--    body{-->
+<!--        background: url([[@{/assets/img/img.png}]])-->
+<!--        no-repeat center center fixed;-->
+<!--    }-->
+<!--</style>-->
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">PolSzczygKucBud</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Strona Powitalna
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Strona Główna</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Logowanie</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!--Using images in page    -->
+<!-- <img th:src="@{/assets/img/img.png}" alt="Image" class="img-fluid"> -->
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mt-5" style="text-align: center;">
+            <label style="font-size:40px">
+                Witaj na oficjalnej stronie producenta Radiowo-Telewizyjnego PolSzczygKucBuD!</label>
+            Nasza firma została założona w styczniu 2020 roku z pasją do nowoczesnych
+            mediów. Jesteśmy dumni z bogatego dziedzictwa w branży radiowo-telewizyjnej,
+            oferując innowacyjne rozwiązania i wysokiej jakości treści. Zobacz, jak przenosimy
+            doświadczenia audiowizualne na nowy poziom, łącząc technologię z
+            kreatywnością. Odkryj nasze stacje radiowe i telewizyjne, które śmiało kroczą w
+            świat cyfrowej rozrywki. Dziękujemy za wsparcie i zapraszamy do odkrywania
+            fascynującego świata PolSzczygKucBuD!
+
+
+            <h2 style="text-align: ; margin-top: 40px; color: #fff; font-size: 50px; font-family: 'Bevan', sans-serif;">NASZE STACJE</h2>
+            <div class="separator"></div>
+            <div class="station-icons mt-4">
+
+<!--                <div class="station-name" onmouseover="showOpis(opis1)" onmouseout="resetTextSize(this)" data-toggle="tooltip"-->
+<!--                                             data-placement="left"></div>-->
+<!--                        <div class="opis", id="opis1">-->
+<!--                        "Witaj na BiznesVision - stacji telewizyjnej, która przekształca sposób,-->
+<!--                        w jaki postrzegasz świat biznesu! Jesteśmy połączeniem informacji, inspiracji i praktycznych wskazówek-->
+<!--                        dla profesjonalistów i przedsiębiorców na każdym etapie kariery."-->
+<!--                        </div>-->
+
+                <div class="station-name" onmouseover="enlargeText(this)" onmouseout="resetTextSize(this)" data-toggle="tooltip"
+                     data-placement="left"
+                     title="Witaj na BiznesVision - stacji telewizyjnej, która przekształca sposób,
+                      w jaki postrzegasz świat biznesu! Jesteśmy połączeniem informacji, inspiracji i praktycznych wskazówek
+                      dla profesjonalistów i przedsiębiorców na każdym etapie kariery.">BiznesVision</div>
+
+                <div class="station-name" onmouseover="enlargeText(this)" onmouseout="resetTextSize(this)"
+                     data-toggle="tooltip" data-placement="left"
+                     title="LaughterLinx TV to stacja telewizyjna, która dostarcza niezapomniane chwile rozrywki.
+                     Zbierając najśmieszniejsze treści z różnych gatunków, zapewnia widzom pełen uśmiechu przekrój
+                     humoru na każdy dzień.">LaughterLinx TV</div>
+
+                <div class="station-name" onmouseover="enlargeText(this)" onmouseout="resetTextSize(this)"
+                     data-toggle="tooltip" data-placement="left"
+                     title="MeldodyWave Radio to stacja radiowa, gdzie dobra muzyka spotyka się z rozrywkowymi audycjami.
+                     Oferując eklektyczny mix utworów i zabawnych programów, stacja ta jest idealnym towarzyszem dla tych,
+                     którzy kochają melodyjne dźwięki i pozytywną atmosferę.">MelodyWave Radio</div>
+                <!-- ... (Dodaj więcej stacji) ... -->
+            </div>
+
+
+            <h2 style="text-align: center; margin-top: 40px; color: #fff; font-size: 50px; font-family: 'Playfair Display', sans-serif;">NASZE PROGRAMY</h2>
+
+            <div class="separator"></div>
+            <div class="program-icons mt-4" style="text-align: center;">
+
+                <div class="program-name" onmouseover="enlargeText(this)" onmouseout="resetTextSize(this)"
+                     data-toggle="tooltip" data-placement="right"
+                     title="SuperQuiz to interaktywny quiz, który sprawdzi twoją wiedzę i zaskoczy ciekawostkami.
+                     Doświadcz niezapomnianych chwil z inteligentnymi pytaniami i zabawnymi odpowiedziami!">SuperQuiz
+                </div>
+
+                <div class="program-name" onmouseover="enlargeText(this)" onmouseout="resetTextSize(this)"
+                     data-toggle="tooltip" data-placement="right"
+                     title="Światowy Przegląd Informacyjny to program, który dostarcza najważniejsze wiadomości z całego świata.
+                     Bądź na bieżąco z wydarzeniami i pogłębiaj swoją wiedzę na temat globalnych spraw.">Światowy Przegląd Informacyjny
+                </div>
+
+                <div class="program-name" onmouseover="enlargeText(this)" onmouseout="resetTextSize(this)"
+                data-toggle="tooltip" data-placement="right"
+                title="Poranny Kocioł to energetyczna dawka humoru i pozytywnej energii na rozpoczęcie dnia.
+                Zabawne rozmowy, konkursy i świetna muzyka - idealny sposób na dobry początek poranka!">Poranny Kocioł
+                </div>
+                <!-- ... (Dodaj więcej programów) ... -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!--<div align="center">
+    <h1>Sales Records</h1>
+
+    <table border="1" cellpadding="10">
+
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Action</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="sale : ${listSale}">
+            <td th:text="${sale.id}">ID</td>
+            <td th:text="${sale.item}">Item Name</td>
+            <td th:text="${sale.quantity}">Quantity</td>
+            <td th:text="${sale.amount}">Amount</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>-->
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{js/showOpis.js}"></script>
+<script>
+    function enlargeText(element) {
+        element.style.transform = "scale(1.2)";
+    }
+
+    function resetTextSize(element) {
+        element.style.transform = "scale(1)";
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+</body>
+</html>
